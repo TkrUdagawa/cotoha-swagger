@@ -1,0 +1,811 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: COTOHA API
+servers:
+  - url: 'https://api.ce-cotoha.com'
+paths:
+  /v1/oauth/accesstokens:
+    post:
+      description: issue access token
+      requestBody:
+        description: specify your clientID and clientSecret
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResult'
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResult'
+  /api/dev/nlp/v1/parse:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Parse'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParseResult'
+  /api/dev/nlp/v1/ne:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ne'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NeResult'
+  /api/dev/nlp/v1/coreference:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coreference'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreferenceResult'
+  /api/dev/nlp/v1/keyword:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Keyword'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordResult'
+  /api/dev/nlp/v1/similarity:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Similarity'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimilarityResult'
+
+  /api/dev/nlp/v1/sentence_type:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SentenceType'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SentenceTypeResult'
+    
+  /api/dev/nlp/v1/sentiment:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sentiment'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SentimentResult'
+                
+  /api/dev/nlp/beta/user_attribute:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAttribute'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAttributeResult'
+  
+  /api/dev/nlp/beta/remove_filler:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveFiller'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveFillerResult'
+  
+  /api/dev/nlp/beta/detect_misrecognition:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectMisrecognition'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetectMisrecognitionResult'
+  
+  
+components:
+  schemas:
+    Auth:
+      type: object
+      required:
+        - clientId
+        - clientSecret
+      properties:
+        clientId:
+          type: string
+          format: string
+          example: your client id
+        clientSecret:
+          type: string
+          format: string
+          example: your client secret
+        grantType:
+          type: string
+          default: client_credentials
+          example: client_credentials
+    AuthResult:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: access token
+        token_type:
+          type: string
+          description: bearer
+        expieres_in:
+          type: integer
+          description: 残り有効期限(秒)
+        scope:
+          type: string
+        issued_at:
+          type: string
+    Parse:
+      type: object
+      required:
+        - sentence
+      properties:
+        sentence:
+          type: string
+          format: string
+          example: 昨日太郎は公園に行った
+        type:
+          type: string
+          format: string
+          default: default
+          example: kuzure
+    ParseResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParseInfo'
+        status:
+          type: integer
+        message:
+          type: string
+    Ne:
+      type: object
+      required:
+        - sentence
+      properties:
+        sentence:
+          type: string
+          format: string
+          example: 昨日は東京駅を利用した。
+        type:
+          type: string
+          format: string
+          default: default
+          example: kuzure
+        dic_type:
+          type: array
+          items:
+            type: string
+    NeResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NeInfo'
+        status:
+          type: integer
+        message:
+          type: string
+
+    Coreference:
+      type: object
+      required:
+        - document
+      properties:
+        document:
+          oneOf:
+            - type: string
+              format: string
+              example: 昨日太郎は公園に行った。彼はそこで野球をした。
+            - type: array
+              items:
+                type: string
+                example: ["昨日太郎は公園に行った。", "彼はそこで野球をした。"]
+        type:
+          type: string
+          format: string
+          example: default
+        do_segment:
+          type: boolean
+    CoreferenceResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoreferenceInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    Keyword:
+      type: object
+      required:
+        - document
+      properties:
+        document:
+          oneOf:
+            - type: string
+              format: string
+              example: レストランで昼食を食べた。
+            - type: array
+              items:
+                type: string
+                example: ["レストランで昼食を食べた。"]
+        type:
+          type: string
+          format: string
+          example: default
+        do_segment:
+          type: boolean
+          example: false
+        max_keyword_num:
+          type: integer
+          example: 5
+    KeywordResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    Similarity:
+      type: object
+      required:
+        - s1
+          s2
+      properties:
+        s1:
+          type: string
+          format: string
+          example: 近くのレストランはどこですか？
+        s2:
+          type: string
+          format: string
+          example: このあたりの定食屋はどこにありますか？
+        type:
+          type: string
+          format: string
+          example: default
+    SimilarityResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimilarityInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    SentenceType:
+      type: object
+      required:
+        - sentence
+      properties:
+        sentence:
+          type: string
+          format: string
+          example: あなたの名前は何ですか？
+        type:
+          type: string
+          format: string
+          example: default
+    SentenceTypeResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentenceTypeInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    Sentiment:
+      type: object
+      required:
+        - sentence
+      properties:
+        sentence:
+          type: string
+          format: string
+          example: 人生の春を謳歌しています
+    SentimentResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentimentInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    UserAttribute:
+      type: object
+      required:
+        - document
+      properties:
+        document:
+          oneOf:
+            - type: string
+              format: string
+              example: 私は昨日田町駅で飲みに行ったら奥さんに怒られた。
+            - type: array
+              items:
+                type: string
+                example: ["私は昨日田町駅で飲みに行ったら奥さんに怒られた。"]
+        type:
+          type: string
+          format: string
+          example: default
+        do_segment:
+          type: boolean
+          example: false
+
+    UserAttributeResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttributeInfo'
+        status:
+          type: integer
+        message:
+          type: string
+          
+    RemoveFiller:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          type: string
+          format: string
+          example: えーーっと、あの、今日の打ち合わせでしたっけ。すみません、ちょっと、急用が入ってしまって。
+        do_segment:
+          type: boolean
+    RemoveFillerResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/RemoveFillerInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    DetectMisrecognition:
+      type: object
+      required:
+        - sentence
+      properties:
+        sentence:
+          type: string
+          format: string
+          example: 温泉認識は誤りを起こす
+
+    DetectMisrecognitionResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/DetectMisrecognitionInfo'
+        status:
+          type: integer
+        message:
+          type: string
+  
+    ParseInfo:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenInfo'
+        chunk_info:
+          $ref: '#/components/schemas/ChunkInfo'
+    TokenInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+        form:
+          type: string
+        kana:
+          type: string
+        lemma:
+          type: string
+        pos:
+          type: string
+        feature:
+          type: array
+          items:
+            type: string
+        dependency_labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepInfo'
+        attributes:
+          type: object
+    ChunkInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+        head:
+          type: integer
+        dep:
+          type: string
+        chunk_head:
+          type: integer
+        chunk_funkc:
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkInfo'
+        predicate:
+          type: array
+          items:
+            type: string
+  
+    LinkInfo:
+      type: object
+      properties:
+        link:
+          type: integer
+        label:
+          type: string
+  
+    DepInfo:
+      type: object
+      properties:
+        token_id:
+          type: integer
+        label:
+          type: string
+    NeInfo:
+      type: object
+      properties:
+        begin_pos:
+          type: integer
+        end_pos:
+          type: integer
+        form:
+          type: string
+        std_form:
+          type: string
+        class:
+          type: string
+        extended_class:
+          type: string
+        info:
+          type: string
+        source:
+          type: string
+    CoreferenceInfo:
+      type: object
+      properties:
+        coreferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorefObj'
+        tokens:
+          type: array
+          items:
+            type: string
+    CorefObj:
+      type: object
+      properties:
+        representative_id:
+          type: integer
+        referents:
+          $ref: '#/components/schemas/Referents'
+    KeywordInfo:
+      type: object
+      properties:
+        form:
+          type: string
+        score:
+          type: integer
+    SimilarityInfo:
+      type: object
+      properties:
+        score:
+          type: number
+          example: 0.88565135
+  
+    SentenceTypeInfo:
+      type: object
+      properties:
+        modality:
+          type: string
+          enum:
+            - declarative
+            - interrogative
+            - imperative
+        dialog_act:
+          type: array
+          items:
+            type: string
+            enum:
+              - greeting
+              - information-providing	
+              - feedback
+              - information-seeking	
+              - agreement
+              - feedbackElicitation
+              - commissive
+              - acceptOffer
+              - selfCorrection
+              - thanking
+              - apology
+              - stalling
+              - directive
+              - goodbye
+              - declineOffer
+              - turnAssign
+              - pausing
+              - acceptApology
+              - acceptThanking
+              
+    SentimentInfo:
+      type: object
+      properties:
+        sentiment:
+          type: string
+          enum:
+            - Positive
+            - Negative
+            - Neutral
+            - Positive/Negative
+        score:
+          type: number
+        emotional_pharase:
+          type: array
+          items:
+            type: string
+
+    UserAttributeInfo:
+      type: object
+      properties:
+        age:
+          type: string
+        civilstatus:
+          type: string
+        earnings:
+          type: string
+        gender:
+          type: string
+        habit:
+          type: array
+          items:
+            type: string
+        hobby:
+          type: string
+          items:
+            type: string
+        kind_of_bussiness:
+          type: string
+        kind_of_occupation:
+          type: string
+        location:
+          type: string
+        moving:
+          type: array
+          items:
+            type: string
+        occupation:
+          type: string
+        position:
+          type: string
+  
+    RemoveFillerInfo:
+      type: object
+      properties:
+        fillers:
+          type: array
+          items:
+            type: object
+            properties:
+              begin_pos:
+                type: integer
+              end_pos:
+                type: integer
+              fomr:
+                type: string
+        normalized_sentence:
+          type: string
+        fixed_sentence:
+          type: string
+
+    DetectMisrecognitionInfo:
+      type: object
+      properties:
+        candidates:
+          type: array
+          items:
+            type: object
+            properties:
+              begin_pos:
+                type: integer
+              end_pos:
+                type: integer
+              form:
+                type: string
+              detect_score:
+                type: number
+              correction:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    form:
+                      type: string
+                    correct_score:
+                      type: number
+        score:
+          type: number
+  
+    Referents:
+      type: object
+      properties:
+        referent_id:
+          type: integer
+        sentence_id:
+          type: integer
+        token_id_from:
+          type: integer
+        token_id_to:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
