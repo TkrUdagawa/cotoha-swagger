@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.sentence_type_info import SentenceTypeInfo  # noqa: E501
+from models.detect_misrecognition_candidates_correction import DetectMisrecognitionCandidatesCorrection  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestSentenceTypeInfo(unittest.TestCase):
-    """SentenceTypeInfo unit test stubs"""
+class TestDetectMisrecognitionCandidatesCorrection(unittest.TestCase):
+    """DetectMisrecognitionCandidatesCorrection unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestSentenceTypeInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSentenceTypeInfo(self):
-        """Test SentenceTypeInfo"""
+    def testDetectMisrecognitionCandidatesCorrection(self):
+        """Test DetectMisrecognitionCandidatesCorrection"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.sentence_type_info.SentenceTypeInfo()  # noqa: E501
+        # model = swagger_client.models.detect_misrecognition_candidates_correction.DetectMisrecognitionCandidatesCorrection()  # noqa: E501
         pass
 
 

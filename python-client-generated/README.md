@@ -76,6 +76,17 @@ except ApiException as e:
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+body = swagger_client.Summary() # Summary | 
+
+try:
+    api_response = api_instance.api_dev_nlp_beta_summary_post(body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->api_dev_nlp_beta_summary_post: %s\n" % e)
+
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
 body = swagger_client.UserAttribute() # UserAttribute | 
 
 try:
@@ -181,6 +192,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**api_dev_nlp_beta_detect_misrecognition_post**](docs/DefaultApi.md#api_dev_nlp_beta_detect_misrecognition_post) | **POST** /api/dev/nlp/beta/detect_misrecognition | 
 *DefaultApi* | [**api_dev_nlp_beta_remove_filler_post**](docs/DefaultApi.md#api_dev_nlp_beta_remove_filler_post) | **POST** /api/dev/nlp/beta/remove_filler | 
+*DefaultApi* | [**api_dev_nlp_beta_summary_post**](docs/DefaultApi.md#api_dev_nlp_beta_summary_post) | **POST** /api/dev/nlp/beta/summary | 
 *DefaultApi* | [**api_dev_nlp_beta_user_attribute_post**](docs/DefaultApi.md#api_dev_nlp_beta_user_attribute_post) | **POST** /api/dev/nlp/beta/user_attribute | 
 *DefaultApi* | [**api_dev_nlp_v1_coreference_post**](docs/DefaultApi.md#api_dev_nlp_v1_coreference_post) | **POST** /api/dev/nlp/v1/coreference | 
 *DefaultApi* | [**api_dev_nlp_v1_keyword_post**](docs/DefaultApi.md#api_dev_nlp_v1_keyword_post) | **POST** /api/dev/nlp/v1/keyword | 
@@ -196,40 +208,45 @@ Class | Method | HTTP request | Description
  - [Auth](docs/Auth.md)
  - [AuthResult](docs/AuthResult.md)
  - [ChunkInfo](docs/ChunkInfo.md)
- - [CorefObj](docs/CorefObj.md)
  - [Coreference](docs/Coreference.md)
  - [CoreferenceInfo](docs/CoreferenceInfo.md)
  - [CoreferenceResult](docs/CoreferenceResult.md)
+ - [CoreferenceResultResult](docs/CoreferenceResultResult.md)
  - [DepInfo](docs/DepInfo.md)
  - [DetectMisrecognition](docs/DetectMisrecognition.md)
- - [DetectMisrecognitionInfo](docs/DetectMisrecognitionInfo.md)
- - [DetectMisrecognitionInfoCandidates](docs/DetectMisrecognitionInfoCandidates.md)
- - [DetectMisrecognitionInfoCorrection](docs/DetectMisrecognitionInfoCorrection.md)
+ - [DetectMisrecognitionCandidates](docs/DetectMisrecognitionCandidates.md)
+ - [DetectMisrecognitionCandidatesCorrection](docs/DetectMisrecognitionCandidatesCorrection.md)
  - [DetectMisrecognitionResult](docs/DetectMisrecognitionResult.md)
+ - [DetectMisrecognitionResultResult](docs/DetectMisrecognitionResultResult.md)
+ - [DialogAct](docs/DialogAct.md)
  - [Keyword](docs/Keyword.md)
  - [KeywordInfo](docs/KeywordInfo.md)
  - [KeywordResult](docs/KeywordResult.md)
  - [LinkInfo](docs/LinkInfo.md)
+ - [Modality](docs/Modality.md)
  - [Ne](docs/Ne.md)
  - [NeInfo](docs/NeInfo.md)
  - [NeResult](docs/NeResult.md)
  - [Parse](docs/Parse.md)
  - [ParseInfo](docs/ParseInfo.md)
  - [ParseResult](docs/ParseResult.md)
- - [Referents](docs/Referents.md)
+ - [Referent](docs/Referent.md)
  - [RemoveFiller](docs/RemoveFiller.md)
  - [RemoveFillerInfo](docs/RemoveFillerInfo.md)
  - [RemoveFillerInfoFillers](docs/RemoveFillerInfoFillers.md)
  - [RemoveFillerResult](docs/RemoveFillerResult.md)
  - [SentenceType](docs/SentenceType.md)
- - [SentenceTypeInfo](docs/SentenceTypeInfo.md)
  - [SentenceTypeResult](docs/SentenceTypeResult.md)
+ - [SentenceTypeResultResult](docs/SentenceTypeResultResult.md)
  - [Sentiment](docs/Sentiment.md)
- - [SentimentInfo](docs/SentimentInfo.md)
  - [SentimentResult](docs/SentimentResult.md)
+ - [SentimentResultResult](docs/SentimentResultResult.md)
+ - [SentimentResultResultEmotionalPhrase](docs/SentimentResultResultEmotionalPhrase.md)
  - [Similarity](docs/Similarity.md)
- - [SimilarityInfo](docs/SimilarityInfo.md)
  - [SimilarityResult](docs/SimilarityResult.md)
+ - [SimilarityResultResult](docs/SimilarityResultResult.md)
+ - [Summary](docs/Summary.md)
+ - [SummaryResult](docs/SummaryResult.md)
  - [TokenInfo](docs/TokenInfo.md)
  - [UserAttribute](docs/UserAttribute.md)
  - [UserAttributeInfo](docs/UserAttributeInfo.md)

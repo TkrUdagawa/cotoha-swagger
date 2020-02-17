@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.detect_misrecognition_info_candidates import DetectMisrecognitionInfoCandidates  # noqa: E501
+from models.detect_misrecognition_result_result import DetectMisrecognitionResultResult  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestDetectMisrecognitionInfoCandidates(unittest.TestCase):
-    """DetectMisrecognitionInfoCandidates unit test stubs"""
+class TestDetectMisrecognitionResultResult(unittest.TestCase):
+    """DetectMisrecognitionResultResult unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestDetectMisrecognitionInfoCandidates(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testDetectMisrecognitionInfoCandidates(self):
-        """Test DetectMisrecognitionInfoCandidates"""
+    def testDetectMisrecognitionResultResult(self):
+        """Test DetectMisrecognitionResultResult"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.detect_misrecognition_info_candidates.DetectMisrecognitionInfoCandidates()  # noqa: E501
+        # model = swagger_client.models.detect_misrecognition_result_result.DetectMisrecognitionResultResult()  # noqa: E501
         pass
 
 

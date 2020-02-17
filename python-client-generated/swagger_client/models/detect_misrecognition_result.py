@@ -29,7 +29,7 @@ class DetectMisrecognitionResult(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'list[DetectMisrecognitionInfo]',
+        'result': 'DetectMisrecognitionResultResult',
         'status': 'int',
         'message': 'str'
     }
@@ -59,7 +59,7 @@ class DetectMisrecognitionResult(object):
 
 
         :return: The result of this DetectMisrecognitionResult.  # noqa: E501
-        :rtype: list[DetectMisrecognitionInfo]
+        :rtype: DetectMisrecognitionResultResult
         """
         return self._result
 
@@ -69,7 +69,7 @@ class DetectMisrecognitionResult(object):
 
 
         :param result: The result of this DetectMisrecognitionResult.  # noqa: E501
-        :type: list[DetectMisrecognitionInfo]
+        :type: DetectMisrecognitionResultResult
         """
 
         self._result = result

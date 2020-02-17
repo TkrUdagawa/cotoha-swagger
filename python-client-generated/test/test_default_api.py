@@ -40,6 +40,12 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_api_dev_nlp_beta_summary_post(self):
+        """Test case for api_dev_nlp_beta_summary_post
+
+        """
+        pass
+
     def test_api_dev_nlp_beta_user_attribute_post(self):
         """Test case for api_dev_nlp_beta_user_attribute_post
 

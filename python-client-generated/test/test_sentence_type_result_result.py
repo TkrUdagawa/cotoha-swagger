@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.detect_misrecognition_info_correction import DetectMisrecognitionInfoCorrection  # noqa: E501
+from models.sentence_type_result_result import SentenceTypeResultResult  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestDetectMisrecognitionInfoCorrection(unittest.TestCase):
-    """DetectMisrecognitionInfoCorrection unit test stubs"""
+class TestSentenceTypeResultResult(unittest.TestCase):
+    """SentenceTypeResultResult unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestDetectMisrecognitionInfoCorrection(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testDetectMisrecognitionInfoCorrection(self):
-        """Test DetectMisrecognitionInfoCorrection"""
+    def testSentenceTypeResultResult(self):
+        """Test SentenceTypeResultResult"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.detect_misrecognition_info_correction.DetectMisrecognitionInfoCorrection()  # noqa: E501
+        # model = swagger_client.models.sentence_type_result_result.SentenceTypeResultResult()  # noqa: E501
         pass
 
 

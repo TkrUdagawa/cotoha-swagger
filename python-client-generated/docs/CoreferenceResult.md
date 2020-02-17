@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**list[CoreferenceInfo]**](CoreferenceInfo.md) |  | [optional] 
+**result** | [**CoreferenceResultResult**](CoreferenceResultResult.md) |  | [optional] 
 **status** | **int** |  | [optional] 
 **message** | **str** |  | [optional] 
 

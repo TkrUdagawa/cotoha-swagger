@@ -29,7 +29,7 @@ class SentenceTypeResult(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'list[SentenceTypeInfo]',
+        'result': 'SentenceTypeResultResult',
         'status': 'int',
         'message': 'str'
     }
@@ -59,7 +59,7 @@ class SentenceTypeResult(object):
 
 
         :return: The result of this SentenceTypeResult.  # noqa: E501
-        :rtype: list[SentenceTypeInfo]
+        :rtype: SentenceTypeResultResult
         """
         return self._result
 
@@ -69,7 +69,7 @@ class SentenceTypeResult(object):
 
 
         :param result: The result of this SentenceTypeResult.  # noqa: E501
-        :type: list[SentenceTypeInfo]
+        :type: SentenceTypeResultResult
         """
 
         self._result = result

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**list[SentenceTypeInfo]**](SentenceTypeInfo.md) |  | [optional] 
+**result** | [**SentenceTypeResultResult**](SentenceTypeResultResult.md) |  | [optional] 
 **status** | **int** |  | [optional] 
 **message** | **str** |  | [optional] 
 

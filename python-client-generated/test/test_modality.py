@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.referents import Referents  # noqa: E501
+from models.modality import Modality  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestReferents(unittest.TestCase):
-    """Referents unit test stubs"""
+class TestModality(unittest.TestCase):
+    """Modality unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestReferents(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testReferents(self):
-        """Test Referents"""
+    def testModality(self):
+        """Test Modality"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.referents.Referents()  # noqa: E501
+        # model = swagger_client.models.modality.Modality()  # noqa: E501
         pass
 
 

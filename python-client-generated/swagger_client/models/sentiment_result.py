@@ -29,7 +29,7 @@ class SentimentResult(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'list[SentimentInfo]',
+        'result': 'SentimentResultResult',
         'status': 'int',
         'message': 'str'
     }
@@ -59,7 +59,7 @@ class SentimentResult(object):
 
 
         :return: The result of this SentimentResult.  # noqa: E501
-        :rtype: list[SentimentInfo]
+        :rtype: SentimentResultResult
         """
         return self._result
 
@@ -69,7 +69,7 @@ class SentimentResult(object):
 
 
         :param result: The result of this SentimentResult.  # noqa: E501
-        :type: list[SentimentInfo]
+        :type: SentimentResultResult
         """
 
         self._result = result

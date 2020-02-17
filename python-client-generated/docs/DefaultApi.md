@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**api_dev_nlp_beta_detect_misrecognition_post**](DefaultApi.md#api_dev_nlp_beta_detect_misrecognition_post) | **POST** /api/dev/nlp/beta/detect_misrecognition | 
 [**api_dev_nlp_beta_remove_filler_post**](DefaultApi.md#api_dev_nlp_beta_remove_filler_post) | **POST** /api/dev/nlp/beta/remove_filler | 
+[**api_dev_nlp_beta_summary_post**](DefaultApi.md#api_dev_nlp_beta_summary_post) | **POST** /api/dev/nlp/beta/summary | 
 [**api_dev_nlp_beta_user_attribute_post**](DefaultApi.md#api_dev_nlp_beta_user_attribute_post) | **POST** /api/dev/nlp/beta/user_attribute | 
 [**api_dev_nlp_v1_coreference_post**](DefaultApi.md#api_dev_nlp_v1_coreference_post) | **POST** /api/dev/nlp/v1/coreference | 
 [**api_dev_nlp_v1_keyword_post**](DefaultApi.md#api_dev_nlp_v1_keyword_post) | **POST** /api/dev/nlp/v1/keyword | 
@@ -96,6 +97,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RemoveFillerResult**](RemoveFillerResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_dev_nlp_beta_summary_post**
+> SummaryResult api_dev_nlp_beta_summary_post(body)
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+body = swagger_client.Summary() # Summary | 
+
+try:
+    api_response = api_instance.api_dev_nlp_beta_summary_post(body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->api_dev_nlp_beta_summary_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Summary**](Summary.md)|  | 
+
+### Return type
+
+[**SummaryResult**](SummaryResult.md)
 
 ### Authorization
 

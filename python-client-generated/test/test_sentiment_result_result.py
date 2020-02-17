@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.similarity_info import SimilarityInfo  # noqa: E501
+from models.sentiment_result_result import SentimentResultResult  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestSimilarityInfo(unittest.TestCase):
-    """SimilarityInfo unit test stubs"""
+class TestSentimentResultResult(unittest.TestCase):
+    """SentimentResultResult unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestSimilarityInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSimilarityInfo(self):
-        """Test SimilarityInfo"""
+    def testSentimentResultResult(self):
+        """Test SentimentResultResult"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.similarity_info.SimilarityInfo()  # noqa: E501
+        # model = swagger_client.models.sentiment_result_result.SentimentResultResult()  # noqa: E501
         pass
 
 

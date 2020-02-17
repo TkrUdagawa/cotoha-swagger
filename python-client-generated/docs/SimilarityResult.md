@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**list[SimilarityInfo]**](SimilarityInfo.md) |  | [optional] 
+**result** | [**SimilarityResultResult**](SimilarityResultResult.md) |  | [optional] 
 **status** | **int** |  | [optional] 
 **message** | **str** |  | [optional] 
 

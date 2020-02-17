@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.sentiment_info import SentimentInfo  # noqa: E501
+from models.sentiment_result_result_emotional_phrase import SentimentResultResultEmotionalPhrase  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestSentimentInfo(unittest.TestCase):
-    """SentimentInfo unit test stubs"""
+class TestSentimentResultResultEmotionalPhrase(unittest.TestCase):
+    """SentimentResultResultEmotionalPhrase unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestSentimentInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSentimentInfo(self):
-        """Test SentimentInfo"""
+    def testSentimentResultResultEmotionalPhrase(self):
+        """Test SentimentResultResultEmotionalPhrase"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.sentiment_info.SentimentInfo()  # noqa: E501
+        # model = swagger_client.models.sentiment_result_result_emotional_phrase.SentimentResultResultEmotionalPhrase()  # noqa: E501
         pass
 
 

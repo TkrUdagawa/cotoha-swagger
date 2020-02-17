@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from models.coref_obj import CorefObj  # noqa: E501
+from models.dialog_act import DialogAct  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestCorefObj(unittest.TestCase):
-    """CorefObj unit test stubs"""
+class TestDialogAct(unittest.TestCase):
+    """DialogAct unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestCorefObj(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testCorefObj(self):
-        """Test CorefObj"""
+    def testDialogAct(self):
+        """Test DialogAct"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.coref_obj.CorefObj()  # noqa: E501
+        # model = swagger_client.models.dialog_act.DialogAct()  # noqa: E501
         pass
 
 

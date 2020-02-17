@@ -29,7 +29,7 @@ class CoreferenceResult(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'list[CoreferenceInfo]',
+        'result': 'CoreferenceResultResult',
         'status': 'int',
         'message': 'str'
     }
@@ -59,7 +59,7 @@ class CoreferenceResult(object):
 
 
         :return: The result of this CoreferenceResult.  # noqa: E501
-        :rtype: list[CoreferenceInfo]
+        :rtype: CoreferenceResultResult
         """
         return self._result
 
@@ -69,7 +69,7 @@ class CoreferenceResult(object):
 
 
         :param result: The result of this CoreferenceResult.  # noqa: E501
-        :type: list[CoreferenceInfo]
+        :type: CoreferenceResultResult
         """
 
         self._result = result

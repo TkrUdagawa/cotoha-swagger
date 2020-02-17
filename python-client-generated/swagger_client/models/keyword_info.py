@@ -30,7 +30,7 @@ class KeywordInfo(object):
     """
     swagger_types = {
         'form': 'str',
-        'score': 'int'
+        'score': 'float'
     }
 
     attribute_map = {
@@ -75,7 +75,7 @@ class KeywordInfo(object):
 
 
         :return: The score of this KeywordInfo.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._score
 
@@ -85,7 +85,7 @@ class KeywordInfo(object):
 
 
         :param score: The score of this KeywordInfo.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._score = score

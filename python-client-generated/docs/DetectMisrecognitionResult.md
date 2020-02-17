@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**list[DetectMisrecognitionInfo]**](DetectMisrecognitionInfo.md) |  | [optional] 
+**result** | [**DetectMisrecognitionResultResult**](DetectMisrecognitionResultResult.md) |  | [optional] 
 **status** | **int** |  | [optional] 
 **message** | **str** |  | [optional] 
 
