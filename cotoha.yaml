@@ -224,7 +224,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/DetectMisrecognitionResult'
   
-  
+  /api/dev/nlp/beta/summary:
+    post:
+      security:
+        - bearerAuth: []
+      summary: ''
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Summary'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResult'
 components:
   schemas:
     Auth:
@@ -340,9 +358,18 @@ components:
       type: object
       properties:
         result:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoreferenceInfo'
+          type: object
+          properties:
+            coreference:
+              type: array
+              items:
+                $ref: '#/components/schemas/CoreferenceInfo'
+            tokens:
+              type: array
+              items:
+                type: array
+                items:
+                  type: string
         status:
           type: integer
         message:
@@ -406,9 +433,10 @@ components:
       type: object
       properties:
         result:
-          type: array
-          items:
-            $ref: '#/components/schemas/SimilarityInfo'
+          type: object
+          properties:
+            score:
+              type: number
         status:
           type: integer
         message:
@@ -431,9 +459,14 @@ components:
       type: object
       properties:
         result:
-          type: array
-          items:
-            $ref: '#/components/schemas/SentenceTypeInfo'
+          type: object
+          properties:
+            modality:
+              $ref: '#/components/schemas/Modality'
+            dialog_act:
+              type: array
+              items:
+                $ref: '#/components/schemas/DialogAct'
         status:
           type: integer
         message:
@@ -452,9 +485,27 @@ components:
       type: object
       properties:
         result:
-          type: array
-          items:
-            $ref: '#/components/schemas/SentimentInfo'
+          type: object
+          properties:
+            sentiment:
+              type: string
+              enum:
+                - Positive
+                - Negative
+                - Neutral
+                - Positive/Negative
+            score:
+              type: number
+            emotional_phrase:
+              type: array
+              items:
+                type: object
+                properties:
+                  form:
+                    type: string
+                  emotion:
+                    type: string
+
         status:
           type: integer
         message:
@@ -531,13 +582,40 @@ components:
       type: object
       properties:
         result:
-          type: array
-          items:
-            $ref: '#/components/schemas/DetectMisrecognitionInfo'
+          type: object
+          properties:
+            score:
+              type: number
+            candidates:
+              type: array
+              items:
+                $ref: '#/components/schemas/DetectMisrecognitionCandidates'
         status:
           type: integer
         message:
           type: string
+  
+    Summary:
+      type: object
+      required:
+        - document
+      properties:
+        document:
+          type: string
+          format: string
+          example: 前線が太平洋上に停滞しています。
+        sent_len:
+          type: integer
+          example: 1
+
+    SummaryResult:
+      type: object
+      properties:
+        result:
+          type: string
+        status:
+          type: integer
+
   
     ParseInfo:
       type: object
@@ -630,85 +708,48 @@ components:
     CoreferenceInfo:
       type: object
       properties:
-        coreferences:
-          type: array
-          items:
-            $ref: '#/components/schemas/CorefObj'
-        tokens:
-          type: array
-          items:
-            type: string
-    CorefObj:
-      type: object
-      properties:
         representative_id:
           type: integer
         referents:
-          $ref: '#/components/schemas/Referents'
+          type: array
+          items:
+            $ref: '#/components/schemas/Referent'
+
     KeywordInfo:
       type: object
       properties:
         form:
           type: string
         score:
-          type: integer
-    SimilarityInfo:
-      type: object
-      properties:
-        score:
           type: number
-          example: 0.88565135
-  
-    SentenceTypeInfo:
-      type: object
-      properties:
-        modality:
-          type: string
-          enum:
-            - declarative
-            - interrogative
-            - imperative
-        dialog_act:
-          type: array
-          items:
-            type: string
-            enum:
-              - greeting
-              - information-providing	
-              - feedback
-              - information-seeking	
-              - agreement
-              - feedbackElicitation
-              - commissive
-              - acceptOffer
-              - selfCorrection
-              - thanking
-              - apology
-              - stalling
-              - directive
-              - goodbye
-              - declineOffer
-              - turnAssign
-              - pausing
-              - acceptApology
-              - acceptThanking
-              
-    SentimentInfo:
-      type: object
-      properties:
-        sentiment:
-          type: string
-          enum:
-            - Positive
-            - Negative
-            - Neutral
-            - Positive/Negative
-        score:
-          type: number
-        emotional_pharase:
-          type: array
-          items:
-            type: string
+    Modality:
+      type: string
+      enum:
+        - declarative
+        - interrogative
+        - imperative
+    DialogAct:
+      type: string
+      enum:
+        - greeting
+        - information-providing  
+        - feedback
+        - information-seeking  
+        - agreement
+        - feedbackElicitation
+        - commissive
+        - acceptOffer
+        - selfCorrection
+        - thanking
+        - apology
+        - stalling
+        - directive
+        - goodbye
+        - declineOffer
+        - turnAssign
+        - pausing
+        - acceptApology
+        - acceptThanking
 
     UserAttributeInfo:
       type: object
@@ -763,35 +804,28 @@ components:
         fixed_sentence:
           type: string
 
-    DetectMisrecognitionInfo:
+    DetectMisrecognitionCandidates:
       type: object
       properties:
-        candidates:
+        begin_pos:
+          type: integer
+        end_pos:
+          type: integer
+        form:
+          type: string
+        detect_score:
+          type: number
+        correction:
           type: array
           items:
             type: object
             properties:
-              begin_pos:
-                type: integer
-              end_pos:
-                type: integer
               form:
                 type: string
-              detect_score:
+              correct_score:
                 type: number
-              correction:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    form:
-                      type: string
-                    correct_score:
-                      type: number
-        score:
-          type: number
   
-    Referents:
+    Referent:
       type: object
       properties:
         referent_id:
@@ -802,10 +836,14 @@ components:
           type: integer
         token_id_to:
           type: integer
+        form:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+
 security:
   - bearerAuth: []
+
